@@ -16,7 +16,7 @@ RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && mv EspoCRM-8.2.0/* . \
     && rm -rf EspoCRM-8.2.0
 
-# 🔥 CRIA DIRETÓRIO DE DADOS FORA DO /var/www/html
+# 🔥 CRIA DIRETÓRIO DE DADOS FORA DO /var/www/html (Render permite escrita)
 RUN mkdir -p /data/logs \
     && mkdir -p /data/cache \
     && mkdir -p /data/upload \
