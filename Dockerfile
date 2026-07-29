@@ -16,14 +16,14 @@ RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && mv EspoCRM-8.2.0/* . \
     && rm -rf EspoCRM-8.2.0
 
-# 🔥 PERMISSÕES CORRETAS PARA TODAS AS PASTAS QUE O ESPOCRM USA
+# 🔥 CRIAÇÃO DAS PASTAS NECESSÁRIAS ANTES DO CHMOD
+RUN mkdir -p /var/www/html/data/logs \
+    && mkdir -p /var/www/html/data/cache \
+    && mkdir -p /var/www/html/custom
+
+# 🔥 PERMISSÕES CORRETAS
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html \
-    && chmod -R 775 /var/www/html/data \
-    && chmod -R 775 /var/www/html/data/logs \
-    && chmod -R 775 /var/www/html/data/cache \
-    && chmod -R 775 /var/www/html/application \
-    && chmod -R 775 /var/www/html/custom
+    && chmod -R 775 /var/www/html
 
 RUN a2enmod rewrite
 
