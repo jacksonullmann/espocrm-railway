@@ -1,12 +1,13 @@
 #!/bin/bash
 
 echo "Fixing permissions..."
-chown -R www-data:www-data /var/www/html/data
-chmod -R 775 /var/www/html/data
+chown -R www-data:www-data /data
+chmod -R 775 /data
 
 echo "Waiting for database..."
 sleep 10
 
+echo "Generating config.php..."
 cat <<EOF > /var/www/html/data/config.php
 <?php
 return [
@@ -19,6 +20,7 @@ return [
         'password' => getenv('DB_PASSWORD'),
     ],
     'siteUrl' => getenv('SITE_URL'),
+    'dataPath' => '/data',
 ];
 EOF
 
