@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Fixing permissions..."
+chown -R www-data:www-data /var/www/html/data
+chmod -R 775 /var/www/html/data
+
 echo "Waiting for database..."
 sleep 10
 
