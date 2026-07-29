@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Espera o MySQL do Railway subir
-echo "Aguardando MySQL..."
+echo "Waiting for database..."
 sleep 10
 
-# Cria config do EspoCRM
 cat <<EOF > /var/www/html/data/config.php
 <?php
 return [
@@ -20,8 +18,6 @@ return [
 ];
 EOF
 
-# Cria admin automaticamente
 php /var/www/html/command.php user:create admin "$(echo $ADMIN_EMAIL)" "$(echo $ADMIN_PASSWORD)" Admin
 
-# Inicia Apache
 apache2-foreground
