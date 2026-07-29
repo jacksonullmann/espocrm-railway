@@ -13,8 +13,8 @@ WORKDIR /var/www/html
 RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && unzip espocrm.zip \
     && rm espocrm.zip \
-    && mv EspoCRM/* . \
-    && rm -rf EspoCRM
+    && mv EspoCRM-8.2.0/* . \
+    && rm -rf EspoCRM-8.2.0
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html
