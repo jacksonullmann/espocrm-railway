@@ -1,4 +1,5 @@
-ARG REBUILD=1
+ARG FORCE_REBUILD=1
+
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
