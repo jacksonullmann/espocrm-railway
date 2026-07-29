@@ -22,8 +22,10 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN a2enmod rewrite
 
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
-COPY start.sh /start.sh
 
+RUN a2ensite 000-default.conf
+
+COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 CMD ["/start.sh"]
