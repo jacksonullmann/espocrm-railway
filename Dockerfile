@@ -21,7 +21,7 @@ RUN mkdir -p /var/www/html/data/logs \
     && mkdir -p /var/www/html/data/cache \
     && mkdir -p /var/www/html/custom
 
-# 🔥 PERMISSÕES SIMPLES (o resto será corrigido no start.sh)
+# 🔥 PERMISSÕES SIMPLES (o resto é no start.sh)
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html
 
