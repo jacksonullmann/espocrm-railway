@@ -16,12 +16,12 @@ RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && mv EspoCRM-8.2.0/* . \
     && rm -rf EspoCRM-8.2.0
 
-# 🔥 CRIAÇÃO DAS PASTAS NECESSÁRIAS ANTES DO CHMOD
+# 🔥 CRIAÇÃO DAS PASTAS NECESSÁRIAS
 RUN mkdir -p /var/www/html/data/logs \
     && mkdir -p /var/www/html/data/cache \
     && mkdir -p /var/www/html/custom
 
-# 🔥 PERMISSÕES CORRETAS
+# 🔥 PERMISSÕES SIMPLES (o resto será corrigido no start.sh)
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html
 
