@@ -16,10 +16,12 @@ RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && mv EspoCRM-8.2.0/* . \
     && rm -rf EspoCRM-8.2.0
 
-# PERMISSÕES CORRETAS PARA O ESPOCRM
+# 🔥 PERMISSÕES CORRETAS PARA TODAS AS PASTAS QUE O ESPOCRM USA
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html \
     && chmod -R 775 /var/www/html/data \
+    && chmod -R 775 /var/www/html/data/logs \
+    && chmod -R 775 /var/www/html/data/cache \
     && chmod -R 775 /var/www/html/application \
     && chmod -R 775 /var/www/html/custom
 
