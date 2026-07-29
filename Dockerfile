@@ -16,14 +16,14 @@ RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && mv EspoCRM-8.2.0/* . \
     && rm -rf EspoCRM-8.2.0
 
-# 🔥 CRIAÇÃO DAS PASTAS NECESSÁRIAS
-RUN mkdir -p /var/www/html/data/logs \
-    && mkdir -p /var/www/html/data/cache \
-    && mkdir -p /var/www/html/custom
+# 🔥 CRIA DIRETÓRIO DE DADOS FORA DO /var/www/html
+RUN mkdir -p /data/logs \
+    && mkdir -p /data/cache \
+    && mkdir -p /data/upload \
+    && mkdir -p /data/files
 
-# 🔥 PERMISSÕES SIMPLES (o resto é no start.sh)
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html
+RUN chown -R www-data:www-data /data \
+    && chmod -R 775 /data
 
 RUN a2enmod rewrite
 
