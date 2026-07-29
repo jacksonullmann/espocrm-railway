@@ -16,13 +16,16 @@ RUN curl -L https://www.espocrm.com/downloads/EspoCRM-8.2.0.zip -o espocrm.zip \
     && mv EspoCRM-8.2.0/* . \
     && rm -rf EspoCRM-8.2.0
 
+# PERMISSÕES CORRETAS PARA O ESPOCRM
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html
+    && chmod -R 775 /var/www/html \
+    && chmod -R 775 /var/www/html/data \
+    && chmod -R 775 /var/www/html/application \
+    && chmod -R 775 /var/www/html/custom
 
 RUN a2enmod rewrite
 
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
-
 RUN a2ensite 000-default.conf
 
 COPY start.sh /start.sh
